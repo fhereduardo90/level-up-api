@@ -34,26 +34,26 @@ class MovieTest < ActiveSupport::TestCase
     assert_not_includes movie2.errors.messages[:stock], error
   end
 
-  test 'should not be valid if visible is either empty or nil' do
-    movie1 = Movie.new(visible: '')
-    movie2 = Movie.new(visible: nil)
+  test 'should not be valid if enable is either empty or nil' do
+    movie1 = Movie.new(enable: '')
+    movie2 = Movie.new(enable: nil)
     movie1.valid?
     movie2.valid?
     error = I18n.t('errors.messages.inclusion')
 
-    assert_includes movie1.errors.messages[:visible], error
-    assert_includes movie2.errors.messages[:visible], error
+    assert_includes movie1.errors.messages[:enable], error
+    assert_includes movie2.errors.messages[:enable], error
   end
 
-  test 'should be valid if visible is true or false' do
-    movie1 = Movie.new(visible: true)
-    movie2 = Movie.new(visible: false)
+  test 'should be valid if enable is true or false' do
+    movie1 = Movie.new(enable: true)
+    movie2 = Movie.new(enable: false)
     movie1.valid?
     movie2.valid?
     error = I18n.t('errors.messages.inclusion')
 
-    assert_not_includes movie1.errors.messages[:visible], error
-    assert_not_includes movie2.errors.messages[:visible], error
+    assert_not_includes movie1.errors.messages[:enable], error
+    assert_not_includes movie2.errors.messages[:enable], error
   end
 
   test 'should not be valid if description length is greater than 255 characters' do
