@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+star_wars:
+  name: 'Star Wars: The Rise of Skywalker'
+  description: 'test desc'
+  stock: 1
+  visible: true
+
+lion_king:
+  name: 'The Lion King'
+  description: 'test desc'
+  stock: 2
+  visible: false
