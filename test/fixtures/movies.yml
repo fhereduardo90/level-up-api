@@ -11,3 +11,15 @@ lion_king:
   description: 'test desc'
   stock: 2
   enable: false
+
+enable:
+  name: 'The Lion King [enable]'
+  description: 'test desc'
+  stock: 2
+  enable: true
+
+disable:
+  name: 'The Lion King [disable]'
+  description: 'test desc'
+  stock: 2
+  enable: false
