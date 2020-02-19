@@ -1,0 +1,6 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+john_star_wars:
+  user: john
+  movie: star_wars
+  quantity: 1
