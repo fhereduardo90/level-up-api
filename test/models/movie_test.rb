@@ -73,4 +73,19 @@ class MovieTest < ActiveSupport::TestCase
     assert_not_includes movie2.errors.messages[:description], error
     assert_not_includes movie3.errors.messages[:description], error
   end
+  
+  test 'should be invalid if name is already taken' do
+    star_wars = movies(:star_wars)
+    movie = Movie.new(name: star_wars.name)
+    movie.valid?
+
+    assert_includes movie.errors.messages[:name], I18n.t('errors.messages.taken')
+  end
+
+  test 'should be valid if name is not already taken' do
+    movie = Movie.new(name: SecureRandom.hex(3))
+    movie.valid?
+
+    assert_not_includes movie.errors.messages[:name], I18n.t('errors.messages.taken')
+  end
 end
