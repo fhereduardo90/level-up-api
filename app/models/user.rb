@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true
   validate :valid_age
 
-  before_save :generate_confirmation_token
+  before_create :generate_confirmation_token
 
   private
 
