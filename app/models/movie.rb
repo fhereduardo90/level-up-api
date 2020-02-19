@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  has_many :purchases
+  has_many :purchases, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates :enable, inclusion: { in: [true, false] }
