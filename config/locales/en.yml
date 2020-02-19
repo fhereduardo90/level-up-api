@@ -34,3 +34,4 @@ en:
   errors:
     messages:
       age: 'should be over %{age} years old'
+      invalid_token: 'invalid token'
