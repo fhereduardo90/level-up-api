@@ -12,7 +12,7 @@ module Users
 
     test 'should raise an exception if an invalid token is provided' do
       assert_raises(ApiNotFoundError) do
-        ::UserServices::ConfirmAccount.call('abc')
+        ::UserServices::ConfirmAccount.call(SecureRandom.hex(3))
       end
     end
   end
