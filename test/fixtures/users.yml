@@ -6,6 +6,8 @@ john:
   birthdate: 1990-10-13
   email: test1@test.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmation_token: <%= Devise.friendly_token %>
+  confirmation_sent_at: <%= Time.now.utc %>
 
 dan:
   first_name: Dan
@@ -13,3 +15,5 @@ dan:
   birthdate: 1990-10-13
   email: test2@test.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmation_token: <%= Devise.friendly_token %>
+  confirmation_sent_at: <%= Time.now.utc %>
