@@ -11,7 +11,7 @@ module UserServices
 
       raise ApiNotFoundError.new(
         title: ERROR_TITLE,
-        message: 'El enlace ya no es válido'
+        message: I18n.t('errors.messages.invalid_token')
       ) unless user.persisted?
 
       user
