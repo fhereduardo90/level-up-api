@@ -1,4 +1,6 @@
 class ApiError < StandardError
+  attr_accessor :response, :title, :message, :errors, :code
+ 
   def initialize(options = {})
     @response = options[:response]
     @title = options[:title]
