@@ -3,23 +3,23 @@
 star_wars:
   name: 'Star Wars: The Rise of Skywalker'
   description: 'test desc'
-  stock: 1
+  stock: 10
   enable: true
 
 lion_king:
   name: 'The Lion King'
   description: 'test desc'
-  stock: 2
-  enable: false
+  stock: 20
+  enable: true
 
 enable:
   name: 'The Lion King [enable]'
   description: 'test desc'
-  stock: 2
+  stock: 10
   enable: true
 
 disable:
   name: 'The Lion King [disable]'
   description: 'test desc'
-  stock: 2
+  stock: 10
   enable: false
