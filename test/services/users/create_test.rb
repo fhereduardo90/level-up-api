@@ -28,5 +28,3 @@ module Users
     end
   end
 end
-
-example
