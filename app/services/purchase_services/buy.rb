@@ -2,7 +2,7 @@ module PurchaseServices
   class Buy < ::BaseService
     ERROR_TITLE = 'Purchase Error'.freeze
 
-    def initialize(user, movie_id, quantity)
+    def initialize(user, movie_id:, quantity:)
       @user = user
       @movie_id = movie_id
       @quantity = quantity
@@ -10,9 +10,12 @@ module PurchaseServices
 
     def call
       unless movie = Movie.find_by(id: @movie_id, enable: true)
-        raise ApiError.new(
+        raise ApiNotFoundError.new(
           title: ERROR_TITLE,
-          message: I18n.t('errors.messages.record_not_found', klass: Movie.name, field: 'id', value: @movie_id)
+          message: I18n.t(
+            'errors.messages.record_not_found',
+            klass: Movie.name, field: 'id', value: @movie_id
+          )
         )
       end
 
@@ -23,7 +26,12 @@ module PurchaseServices
 
       ActiveRecord::Base.transaction do
         movie.decrement!(:stock, @quantity)
-        Purchase.create!(user: @user, movie: movie, quantity: @quantity)
+        Purchase.create!(
+          user: @user,
+          movie: movie,
+          price: movie.price,
+          quantity: @quantity
+        )
       end
     end
   end

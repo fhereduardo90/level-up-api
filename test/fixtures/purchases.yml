@@ -4,3 +4,4 @@ john_star_wars:
   user: john
   movie: star_wars
   quantity: 1
+  price: 10.99
