@@ -8,7 +8,8 @@ module Movies
         description: 'test description',
         stock: 10,
         enable: true,
-        price: 10.99
+        price: 10.99,
+        rental_price: 5.99
       }
       result = nil
 
