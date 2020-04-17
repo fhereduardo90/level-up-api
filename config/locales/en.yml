@@ -37,3 +37,4 @@ en:
       invalid_token: invalid token
       out_stock: out of stock
       record_not_found: Couldn't find %{klass} with '%{field}'=%{value}
+      due_date: must be greater than current time
