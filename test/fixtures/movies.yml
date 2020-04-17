@@ -5,21 +5,29 @@ star_wars:
   description: 'test desc'
   stock: 10
   enable: true
+  price: 10.99
+  rental_price: 5.99
 
 lion_king:
   name: 'The Lion King'
   description: 'test desc'
   stock: 20
   enable: true
+  price: 10.99
+  rental_price: 5.99
 
 enable:
   name: 'The Lion King [enable]'
   description: 'test desc'
   stock: 10
   enable: true
+  price: 10.99
+  rental_price: 5.99
 
 disable:
   name: 'The Lion King [disable]'
   description: 'test desc'
   stock: 10
   enable: false
+  price: 10.99
+  rental_price: 5.99

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_173923) do
+ActiveRecord::Schema.define(version: 2020_04_17_015056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_02_19_173923) do
     t.boolean "enable", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "price", precision: 8, scale: 2, default: "0.0", null: false
+    t.decimal "rental_price", precision: 8, scale: 2, default: "0.0", null: false
     t.index ["name"], name: "index_movies_on_name", unique: true
   end
 
@@ -33,6 +35,18 @@ ActiveRecord::Schema.define(version: 2020_02_19_173923) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["movie_id"], name: "index_purchases_on_movie_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "rentals", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "movie_id", null: false
+    t.integer "quantity", default: 0, null: false
+    t.string "status", null: false
+    t.datetime "due_date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_rentals_on_movie_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,4 +71,6 @@ ActiveRecord::Schema.define(version: 2020_02_19_173923) do
 
   add_foreign_key "purchases", "movies"
   add_foreign_key "purchases", "users"
+  add_foreign_key "rentals", "movies"
+  add_foreign_key "rentals", "users"
 end

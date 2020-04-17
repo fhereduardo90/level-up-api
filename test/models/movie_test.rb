@@ -34,6 +34,34 @@ class MovieTest < ActiveSupport::TestCase
     assert_not_includes movie2.errors.messages[:stock], error
   end
 
+  test 'should not be valid if stock is not a number' do
+    movie = Movie.new(stock: '')
+    movie.valid?
+
+    assert_includes movie.errors.messages[:stock], I18n.t('errors.messages.not_a_number')
+  end
+
+  test 'should be valid if stock is a number' do
+    movie = Movie.new(stock: 2)
+    movie.valid?
+
+    assert_not_includes movie.errors.messages[:stock], I18n.t('errors.messages.not_a_number')
+  end
+
+  test 'should not be valid if stock is not an integer' do
+    movie = Movie.new(stock: 2.22)
+    movie.valid?
+
+    assert_includes movie.errors.messages[:stock], I18n.t('errors.messages.not_an_integer')
+  end
+
+  test 'should be valid if stock is a valid integer' do
+    movie = Movie.new(stock: 1)
+    movie.valid?
+
+    assert_not_includes movie.errors.messages[:stock], I18n.t('errors.messages.not_an_integer')
+  end
+
   test 'should not be valid if enable is either empty or nil' do
     movie1 = Movie.new(enable: '')
     movie2 = Movie.new(enable: nil)
@@ -87,5 +115,61 @@ class MovieTest < ActiveSupport::TestCase
     movie.valid?
 
     assert_not_includes movie.errors.messages[:name], I18n.t('errors.messages.taken')
+  end
+
+  test 'should not be valid if price is less than or equal to 0' do
+    movie = Movie.new(price: 0)
+    movie.valid?
+
+    assert_includes movie.errors.messages[:price], I18n.t('errors.messages.greater_than', count: 0)
+  end
+
+  test 'should be valid if price is greater than 0' do
+    movie = Movie.new(price: 1)
+    movie.valid?
+
+    assert_not_includes movie.errors.messages[:price], I18n.t('errors.messages.greater_than', count: 0)
+  end
+
+  test 'should not be valid if price is not a number' do
+    movie = Movie.new(price: '')
+    movie.valid?
+
+    assert_includes movie.errors.messages[:price], I18n.t('errors.messages.not_a_number')
+  end
+
+  test 'should be valid if price is a number' do
+    movie = Movie.new(price: 2)
+    movie.valid?
+
+    assert_not_includes movie.errors.messages[:price], I18n.t('errors.messages.not_a_number')
+  end
+
+  test 'should not be valid if rental price is less than or equal to 0' do
+    movie = Movie.new(rental_price: 0)
+    movie.valid?
+
+    assert_includes movie.errors.messages[:rental_price], I18n.t('errors.messages.greater_than', count: 0)
+  end
+
+  test 'should be valid if rental price is greater than 0' do
+    movie = Movie.new(rental_price: 1)
+    movie.valid?
+
+    assert_not_includes movie.errors.messages[:rental_price], I18n.t('errors.messages.greater_than', count: 0)
+  end
+
+  test 'should not be valid if rental price is not a number' do
+    movie = Movie.new(rental_price: '')
+    movie.valid?
+
+    assert_includes movie.errors.messages[:rental_price], I18n.t('errors.messages.not_a_number')
+  end
+
+  test 'should be valid if rental price is a number' do
+    movie = Movie.new(rental_price: 2)
+    movie.valid?
+
+    assert_not_includes movie.errors.messages[:rental_price], I18n.t('errors.messages.not_a_number')
   end
 end
