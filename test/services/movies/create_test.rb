@@ -7,7 +7,8 @@ module Movies
         name: 'Star Wars: The rise of skywalker',
         description: 'test description',
         stock: 10,
-        enable: true
+        enable: true,
+        price: 10.99
       }
       result = nil
 
