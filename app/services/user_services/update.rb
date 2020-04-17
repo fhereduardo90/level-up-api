@@ -1,5 +1,5 @@
 module UserServices
-  class Edit < ::BaseService
+  class Update < ::BaseService
     ERROR_TITLE = 'User Error'.freeze
 
     def initialize(id, params = {})
